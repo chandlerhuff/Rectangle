@@ -259,7 +259,7 @@ enum WindowAction: Int {
     
     var resizes: Bool {
         switch self {
-        case .moveUp, .moveDown, .moveLeft, .moveRight, .center, .nextDisplay, .previousDisplay: return false
+        case .moveUp, .moveDown, .moveLeft, .moveRight, .nextDisplay, .previousDisplay: return false
         default: return true
         }
     }

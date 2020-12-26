@@ -16,8 +16,11 @@ class CenterCalculation: WindowCalculation {
 
         if rectFitsWithinRect(rect1: params.window.rect, rect2: visibleFrameOfScreen) {
             var calculatedWindowRect = params.window.rect
-            calculatedWindowRect.origin.x = round((visibleFrameOfScreen.width - params.window.rect.width) / 2.0) + visibleFrameOfScreen.minX
-            calculatedWindowRect.origin.y = round((visibleFrameOfScreen.height - params.window.rect.height) / 2.0) + visibleFrameOfScreen.minY
+            let visibleFrameOfScreen = params.visibleFrameOfScreen
+            calculatedWindowRect.size.height = floor(visibleFrameOfScreen.height * 0.65)
+            calculatedWindowRect.size.width = floor(visibleFrameOfScreen.width * 0.65)
+            calculatedWindowRect.origin.x = round((visibleFrameOfScreen.width - calculatedWindowRect.size.width) / 2.0) + visibleFrameOfScreen.minX
+            calculatedWindowRect.origin.y = round((visibleFrameOfScreen.height - calculatedWindowRect.size.height) / 2.0) + visibleFrameOfScreen.minY
             return RectResult(calculatedWindowRect)
         } else {
             return RectResult(visibleFrameOfScreen)
