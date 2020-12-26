@@ -15,7 +15,7 @@ You can download the latest dmg from https://rectangleapp.com or the [Releases p
 Or install with brew cask:
 
 ```bash
-brew cask install rectangle
+brew install --cask rectangle
 ```
 ## How to use it
 The keyboard shortcuts are self explanatory, but the snap areas can use some explanation if you've never used them on Windows or other window management apps.
@@ -68,6 +68,18 @@ defaults write com.knollsoft.Rectangle subsequentExecutionMode -int 2
 1: cycle displays (box checked)
 2: disabled
 3: cycle displays for left/right actions, halves to thirds for the rest (old Rectangle behavior)
+
+### Resize on Directional Move (will be released in v0.41)
+By default, the commands to move to certain edges will not resize the window.
+If `resizeOnDirectionalMove` is enabled, the _halves to thirds_ mode is instead used.
+This means that when moving to the left/right, the width will be changed, and when moving to the top/bottom, the height will be changed.
+This size will cycle between 1/2 -> 2/3 -> 1/3 of the screen’s width/height.
+
+Note that if subsequent execution mode is set to cycle displays when this is enabled, Move Left and Move Right will always resize to 1/2, and pressing it again will move to the next display.
+
+```bash
+defaults write com.knollsoft.Rectangle resizeOnDirectionalMove -bool true
+```
 
 ### Almost Maximize
 By default, "Almost Maximize" will resize the window to 90% of the screen (width & height).
